@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
+
 import Loader from "./components/Loader";
 const Home = lazy(() => import("./pages/Home"));
 const Search = lazy(() => import("./pages/Search"));
@@ -15,6 +16,11 @@ const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
 const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
 const Toss = lazy(() => import("./pages/admin/apps/toss"));
 const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
+
+const Login = lazy(() => import("./pages/login"));
+const Shipping = lazy(() => import("./pages/shipping"));
+const Orders = lazy(() => import("./pages/orders"));
+const OrderDetails = lazy(() => import("./pages/order-details"));
 const ProductManagement = lazy(
   () => import("./pages/admin/management/productmanagement")
 );
@@ -32,6 +38,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
+          {/* Not logegd in route */}
+          <Route path="/login" element={<Login />} />
+          {/* Shipping */}
+          <Route>
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/orders/:id" element={<OrderDetails />} />
+          </Route>
+
           {/* Admin */}
           <Route
           // element={

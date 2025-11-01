@@ -1,4 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import { FaTrash } from "react-icons/fa";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 
@@ -10,14 +11,14 @@ const Productmanagement = () => {
   const [stock, setStock] = useState<number>(10);
   const [name, setName] = useState<string>("Puma Shoes");
   const [photo, setPhoto] = useState<string>(img);
-  const [category, setCategory] = useState<string>("footwear");
+  const [category] = useState<string>("footwear");
 
   const [priceUpdate, setPriceUpdate] = useState<number>(price);
   const [stockUpdate, setStockUpdate] = useState<number>(stock);
   const [nameUpdate, setNameUpdate] = useState<string>(name);
   const [categoryUpdate, setCategoryUpdate] = useState<string>(category);
   const [photoUpdate, setPhotoUpdate] = useState<string>(photo);
-  const [photoFile, setPhotoFile] = useState<File>();
+  const [, setPhotoFile] = useState<File>();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file: File | undefined = e.target.files?.[0];

@@ -1,11 +1,20 @@
+import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
-import { OrderItem } from "../../../models/types";
-import { server } from "../../../redux/store";
 
 const img =
   "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=804";
+
+interface OrderItem {
+  name: string;
+  photo: string;
+  id: string;
+  quantity: number;
+  price: number;
+  productId?: string;
+  _id?: string;
+}
 
 const orderItems: OrderItem[] = [
   {
@@ -50,10 +59,15 @@ const TransactionManagement = () => {
   } = order;
 
   const updateHandler = (): void => {
-    setOrder((prev) => ({
+    setOrder((prev: typeof order) => ({
       ...prev,
       status: "Shipped",
     }));
+  };
+
+  const deleteHandler = (): void => {
+    // TODO: Implement delete handler
+    console.log("Delete handler called");
   };
 
   return (
@@ -69,11 +83,11 @@ const TransactionManagement = () => {
 
           {orderItems.map((i) => (
             <ProductCard
-              key={i._id}
+              key={i.id}
+              id={i.id}
               name={i.name}
-              photo={`${server}/${i.photo}`}
-              productId={i.productId}
-              _id={i._id}
+              photo={i.photo}
+              productId={i.productId || i.id}
               quantity={i.quantity}
               price={i.price}
             />

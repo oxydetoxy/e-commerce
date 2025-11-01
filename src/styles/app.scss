@@ -43,10 +43,10 @@ $color3: rgb(0, 104, 136);
 
 @import "admin/mixin";
 @import "home";
-// @import "cart";
-// @import "shipping";
-// @import "login";
-// @import "search";
+@import "cart.scss";
+@import "shipping.scss";
+@import "login.scss";
+@import "search.scss";
 // @import "product-details";
 // @import "footer";
 

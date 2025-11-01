@@ -1,6 +1,5 @@
 import { FaPlus } from "react-icons/fa";
 
-const server = `hbsfjbksf`;
 type ProductPorps = {
   photo: string;
   name: string;
@@ -13,8 +12,6 @@ const ProductCart = ({
   photo,
   name,
   price,
-  productId,
-  stock,
   handler,
 }: ProductPorps) => {
   return (
